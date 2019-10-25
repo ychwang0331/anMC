@@ -1,4 +1,13 @@
-# anMC 0.2.1
+# anMC 0.2.2
+
+## Changes with respect to anMC 0.2.1
+
+* Fixed an bug in `ProbaMax`, `ProbaMin` that previously resulted in an error in the Cholesky decomposition in rare instances.
+
+* updated DESCRIPTION file with URL and author.
+
+* Fixed bug in `selectQdims` that could cause crashes for some user-defined samplers.
+
 
 ## Changes with respect to anMC 0.2.0
 
