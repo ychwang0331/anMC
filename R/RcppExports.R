@@ -73,7 +73,7 @@ mvrnormArma <- function(n, mu, sigma, chol) {
 #' hist(realizations[1,],breaks="FD")
 #' }
 #' @export
-trmvrnorm_rej_cpp <- function(n, mu, sigma, lower, upper, verb) {
+trmvrnorm_rej_cpp <- function(n, mu, sigma, cholSigma,lower, upper, verb) {
     .Call('_anMC_trmvrnorm_rej_cpp', PACKAGE = 'anMC', n, mu, sigma, cholSigma,lower, upper, verb)
 }
 
