@@ -73,19 +73,14 @@ arma::mat mvrnormArma(int n, arma::vec mu,arma::mat sigma,int chol) {
 //' }
 //' @export
 // [[Rcpp::export]]
-arma::mat trmvrnorm_rej_cpp(int n, arma::vec mu,arma::mat sigma, arma::vec lower, arma::vec upper,int verb) {
+arma::mat trmvrnorm_rej_cpp(int n, arma::vec mu,arma::mat sigma,arma::mat cholSigma, arma::vec lower, arma::vec upper,int verb) {
   int ncols = sigma.n_cols;
   arma::mat Y(ncols, n);
-  arma::mat cholSigma(ncols,ncols);
-  arma::mat newMatrix(ncols,ncols);
   int samplesRemaining = n;
   int totalAccepted = 0;
-  arma::mat sigmat = sigma.t();
-  newMatrix = sigmat * sigma;
-  cholSigma = sigma;
   Environment mvtnorm =  Environment::namespace_env("mvtnorm");
   Function mypmvn =  mvtnorm["pmvnorm"];
-  double alpha = as<double>(mypmvn(NumericVector(lower.begin(),lower.end()),NumericVector(upper.begin(),upper.end()),NumericVector(mu.begin(),mu.end()),R_NilValue,newMatrix));
+  double alpha = as<double>(mypmvn(NumericVector(lower.begin(),lower.end()),NumericVector(upper.begin(),upper.end()),NumericVector(mu.begin(),mu.end()),R_NilValue,sigma));
   if(verb>=3){
     Rcout << "Acceptance rate: " << alpha << "\n";
   }
