@@ -82,7 +82,7 @@ arma::mat trmvrnorm_rej_cpp(int n, arma::vec mu,arma::mat sigma, arma::vec lower
   Environment mvtnorm =  Environment::namespace_env("mvtnorm");
   Function mypmvn =  mvtnorm["pmvnorm"];
   double alpha = as<double>(mypmvn(NumericVector(lower.begin(),lower.end()),NumericVector(upper.begin(),upper.end()),NumericVector(mu.begin(),mu.end()),R_NilValue,sigma));
-  cholSigma = arma::chol(sigma);
+  cholSigma = sigma;
   if(verb>=3){
     Rcout << "Acceptance rate: " << alpha << "\n";
   }
