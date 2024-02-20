@@ -77,7 +77,7 @@ arma::mat trmvrnorm_rej_cpp(int n, arma::vec mu,arma::mat sigma, arma::vec lower
   int ncols = sigma.n_cols;
   arma::mat Y(ncols, n);
   arma::mat cholSigma(ncols,ncols);
-  arma::mat newMatrix = sigma * sigma.t();
+  arma::mat newMatrix = sigma.t() * sigma;
   int samplesRemaining = n;
   int totalAccepted = 0;
   Environment mvtnorm =  Environment::namespace_env("mvtnorm");
