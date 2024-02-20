@@ -74,6 +74,6 @@ mvrnormArma <- function(n, mu, sigma, chol) {
 #' }
 #' @export
 trmvrnorm_rej_cpp <- function(n, mu, sigma, lower, upper, verb) {
-    .Call('_anMC_trmvrnorm_rej_cpp', PACKAGE = 'anMC', n, mu, sigma, lower, upper, verb)
+    .Call('_anMC_trmvrnorm_rej_cpp', PACKAGE = 'anMC', n, mu, sigma, cholSigma,lower, upper, verb)
 }
 
