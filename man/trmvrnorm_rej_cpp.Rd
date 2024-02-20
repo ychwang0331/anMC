@@ -13,6 +13,8 @@ trmvrnorm_rej_cpp(n, mu, sigma, lower, upper, verb)
 
 \item{sigma}{covariance matrix.}
 
+\item{cholSigma}{Chol of covariance matrix.}
+
 \item{lower}{vector of lower bounds.}
 
 \item{upper}{vector of upper bounds.}
