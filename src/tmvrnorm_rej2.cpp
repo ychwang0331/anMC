@@ -93,7 +93,7 @@ arma::mat trmvrnorm_rej_cpp(int n, arma::vec mu,arma::mat sigma, arma::vec lower
   while(samplesRemaining>0)
   {
     int nPossibleSamples = ((samplesRemaining/alpha > imax/ncols/2) ? (samplesRemaining) : (std::max( (int) (ceil(samplesRemaining/alpha)),10)));
-    arma::mat X = mvrnormArma(nPossibleSamples,mu,cholSigma,1);
+    arma::mat X = mvrnormArma(nPossibleSamples,mu,cholSigma,0);
     totalSamplesRun = totalSamplesRun+nPossibleSamples;
     arma::uvec goodIndices(nPossibleSamples);
     goodIndices.fill(-1);
