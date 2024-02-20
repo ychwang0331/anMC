@@ -80,7 +80,7 @@ arma::mat trmvrnorm_rej_cpp(int n, arma::vec mu,arma::mat sigma, arma::vec lower
   arma::mat newMatrix(ncols,ncols);
   int samplesRemaining = n;
   int totalAccepted = 0;
-  newMatrix = sigma * sigma.t();
+  newMatrix = sigma.t() * sigma;
   cholSigma = sigma;
   Environment mvtnorm =  Environment::namespace_env("mvtnorm");
   Function mypmvn =  mvtnorm["pmvnorm"];
